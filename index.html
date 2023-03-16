@@ -11,10 +11,29 @@
     <title>Tic Tac Toe</title>
 </head>
 <body>
-    <div class="main">
-        <button id='start-game' onclick="StartGame()">Start Game</button>
+    <div class="main" id="main">
+        <!-- <button id='start-game' onclick="Choice()">Start Game</button> -->
+        <table id="game">
+            <tbody>
+                <tr>
+                    <td class="grid r1 c1"></td>
+                    <td class="grid r1 c2"></td>
+                    <td class="grid r1 c3"></td>
+                </tr>
+                <tr>
+                    <td class="grid r2 c1"></td>
+                    <td class="grid r2 c2"></td>
+                    <td class="grid r2 c3"></td>
+                </tr>
+                <tr>
+                    <td class="grid r3 c1"></td>
+                    <td class="grid r3 c2"></td>
+                    <td class="grid r3 c3"></td>
+                </tr>
+            </tbody>
+        </table>
     </div>
-    <li>On Start game, choose X or O</li>
+    
     <li>Random choosing who plays you or Comp</li>
     <li>Reset button when game begins</li>
 </body>
