@@ -38,12 +38,23 @@
     
 }
 
-/* #game{
-    display: flex;
-} */
+#game{
+    position: relative;
+    left: 364px;
+    display: none;
+}
 
 .grid{
     width: 100px;
     height: 100px;
-    border: 2px solid red;
+    /* border: 2px solid red; */
+    
+}
+.r1,.r2{
+    border-bottom: 4px solid red;
+    
+}
+
+.c1,.c2{
+    border-right: 4px solid red;
 }
