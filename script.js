@@ -50,82 +50,97 @@ function StartGame(){
     //------------now we decide who goes first---------
 }
 function choice(r,c){
-    // alert(r+c);
     let cell = document.getElementById(`${r}${c}`);
-    let img = document.createElement('img');
 
-    img.setAttribute('src',xpath);
-    cell.appendChild(img);
-    console.log(img);
+    if(cell.innerHTML!=`<img src="./img/${compchoice}.png" id="game-img">`&&cell.innerHTML!=`<img src="./img/${mychoice}.png" id="game-img">`){
+        let img = document.createElement('img');
+        img.setAttribute('src',`./img/${mychoice}.png`);
+        img.setAttribute('id','game-img');
+        cell.appendChild(img);
+        arr[r][c] = mychoice;
+        
+        console.log(arr);
+        isGameEnded(arr);
+        
+        
+    }
+    CompPlays(arr,compchoice);
+    isGameEnded(arr);
+    
 }
-/*
-let generate = Math.floor(Math.random()*2);
-if (generate==1){
-    isMyTurn= true;
-}
-else{
-    isMyTurn = false;
-}
-let displayWhoseTurn = document.createElement('h2');
-displayWhoseTurn.setAttribute("id",'whos-turn');
+function CompPlays(arr,compchoice){
+    while (true){
+        let r = Math.floor(Math.random()*3);
+        let c = Math.floor(Math.random()*3);
+        let cell = document.getElementById(`${r}${c}`);
 
-let isGameEnded = false;
+        if(cell.innerHTML!=`<img src="./img/${compchoice}.png" id="game-img">`&&cell.innerHTML!=`<img src="./img/${mychoice}.png" id="game-img">`){
+            let img = document.createElement('img');
+            img.setAttribute('src',`./img/${compchoice}.png`);
+            img.setAttribute('id','game-img');
+            cell.appendChild(img);
+            arr[r][c]= compchoice;
+            break;
+        
+        }
+
+    }
+}
+
+
+
+
 let arr = [["","",""],["","",""],["","",""]];
-let winner;
-game.appendChild(displayWhoseTurn);
-while (!isGameEnded){
-    if(!isGameEnded){
-        for(let i=0;i<3;i++){
-            if (arr[i]==[mychoice,mychoice,mychoice]){
-                winner = "Player Wins!";
-                break;
-            }
-            if (arr[i]==[compchoice,compchoice,compchoice]){
-                winner = "Computer Wins!";
-                break;
-            }
+
+
+
+function isGameEnded(arr){
+    for(let i=0;i<3;i++){
+        if (arr[i]==[mychoice,mychoice,mychoice]){
+            alert("Player Wins!");
+            
         }
-        for(let j=0;j<3;j++){
-            let newArr = [arr[0][j],arr[1][j],arr[2][j]];
-            if (newArr[i]==[mychoice,mychoice,mychoice]){
-                winner = "Player Wins!";
-                break;
-            }
-            if (newArr[i]==[compchoice,compchoice,compchoice]){
-                winner = "Computer Wins!";
-                break;
-            }
-        }
-        const ldiaArr = [];
-        const rdiaArr = [];
-        for (let i=0;i<3;i++){
-            for(let j = 0;j<3;j++){
-               if (i==j)  ldiaArr.push(arr[i][j]);
-               if(i+j==2) rdiaArr.push(arr[i][j]);
-            }
-        }
-        if (ldiaArr==[mychoice,mychoice,mychoice] || rdiaArr==[mychoice,mychoice,mychoice]){
-            winner = "Player Wins!";
-            break;
-        }
-        if (ldiaArr==[compchoice,compchoice,compchoice] || rdiaArr==[compchoice,compchoice,compchoice]){
-            winner = "Computer Wins!";
-            break;
+        if (arr[i]==[compchoice,compchoice,compchoice]){
+            alert("Computer Wins!");
+            
         }
     }
-    else{
-        if (isMyTurn){
-            displayWhoseTurn.innerText = "Your Turn";
+    for(let j=0;j<3;j++){
+        let newArr = [arr[0][j],arr[1][j],arr[2][j]];
+        if (newArr==[mychoice,mychoice,mychoice]){
+            alert("Player Wins!");
             
-            
-            isMyTurn = !isMyTurn;
         }
-        else{
-            displayWhoseTurn.innerText = "Computer's Turn";
+        if (newArr==[compchoice,compchoice,compchoice]){
+            alert("Computer Wins!");
             
-            
-            isMyTurn = !isMyTurn;
         }
     }
+    let ldiaArr = [];
+    let rdiaArr = [];
+    for (let i=0;i<3;i++){
+        for(let j = 0;j<3;j++){
+           if (i==j)  ldiaArr.push(arr[i][j]);
+           if(i+j==2) rdiaArr.push(arr[i][j]);
+        }
+    }
+    if (ldiaArr==[mychoice,mychoice,mychoice] || rdiaArr==[mychoice,mychoice,mychoice]){
+        alert("Player Wins!");
+        return true;
+    }
+    if (ldiaArr==[compchoice,compchoice,compchoice] || rdiaArr==[compchoice,compchoice,compchoice]){
+        alert("Computer Wins!");
+        return true;
+    }
+    let isDraw = true;
+    for (let i of arr){
+        for(let j of i){
+            if (j=="") isDraw = false;
+        }
+    }
+    if(isDraw){
+        alert("Draw!");
+        return true;
+    }
+    return false;
 }
-*/

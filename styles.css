@@ -58,3 +58,8 @@
 .c1,.c2{
     border-right: 4px solid red;
 }
+
+#game-img{
+    width: 90px;
+    height: 90px; 
+}
